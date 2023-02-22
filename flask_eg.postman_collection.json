@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "8f068043-9d30-4323-b927-9b316adfe3a3",
+		"name": "flask_eg",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13844810"
+	},
+	"item": [
+		{
+			"name": "Get_countries",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.TJ7kfp8WQnH_eChAPhr-frpts9XO1KJvjR_YgnT4KHg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "deviceType",
+						"value": "iOS",
+						"type": "default"
+					},
+					{
+						"key": "appVersion",
+						"value": "1.4.6",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "deviceId",
+						"value": "6cb4cc81-c53b-43cf-b39b-b303defcf6f3",
+						"type": "default"
+					},
+					{
+						"key": "device",
+						"value": "iPhone 13 Pro Max",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"city\":\"Cochin\",\n    \"state\":\"Kerala\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/country/list/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"country",
+						"list",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get_countries",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "deviceType",
+								"value": "iOS",
+								"type": "default"
+							},
+							{
+								"key": "appVersion",
+								"value": "1.4.6",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "deviceId",
+								"value": "6cb4cc81-c53b-43cf-b39b-b303defcf6f3",
+								"type": "default"
+							},
+							{
+								"key": "device",
+								"value": "iPhone 13 Pro Max",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"city\":\"Cochin\",\n    \"state\":\"Kerala\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/onboarding/list-stages/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"onboarding",
+								"list-stages",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.2.3 Python/3.10.6"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 21 Feb 2023 14:58:43 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "668"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": 200,\n    \"data\": [\n        {\n            \"Code\": \"AFE\",\n            \"Country_Name\": \"Africa Eastern and Southern\"\n        },\n        {\n            \"Code\": \"AFW\",\n            \"Country_Name\": \"Africa Western and Central\"\n        },\n        {\n            \"Code\": \"ARB\",\n            \"Country_Name\": \"Arab World\"\n        },\n        {\n            \"Code\": \"CEB\",\n            \"Country_Name\": \"Central Europe and the Baltics\"\n        },\n        {\n            \"Code\": \"CSS\",\n            \"Country_Name\": \"Caribbean small states\"\n        },\n        {\n            \"Code\": \"EAP\",\n            \"Country_Name\": \"East Asia & Pacific (excluding high income)\"\n        },\n        {\n            \"Code\": \"EAR\",\n            \"Country_Name\": \"Early-demographic dividend\"\n        },\n        {\n            \"Code\": \"EAS\",\n            \"Country_Name\": \"East Asia & Pacific\"\n        },\n        {\n            \"Code\": \"EMU\",\n            \"Country_Name\": \"Euro area\"\n        },\n        {\n            \"Code\": \"TEA\",\n            \"Country_Name\": \"East Asia & Pacific (IDA & IBRD countries)\"\n        }\n    ],\n    \"message\": \"Successfully retrieved country list\",\n    \"status\": true\n}"
+				}
+			]
+		}
+	]
+}
