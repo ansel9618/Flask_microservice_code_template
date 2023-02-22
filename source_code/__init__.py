@@ -19,7 +19,7 @@ PORT = os.getenv('DB_PORT')
 DB_NAME = os.getenv('DBNAME')
 
 def customer_details_verification_init(app):
-    app.register_blueprint(bp_get_country, url_prefix='/onboarding/list-stages/')
+    app.register_blueprint(bp_get_country, url_prefix='/country/list/')
 
     update_from_db(app)
 
@@ -48,7 +48,7 @@ def create_enginee(applog,app):
 
 
         if "customer" not in app.config:
-            mst_application_stage(app, applog, engine)
+            mst_country(app, applog, engine)
 
         connec = engine.connect()
         connec.close()
@@ -58,16 +58,16 @@ def create_enginee(applog,app):
     finally:
         return engine
 
-def mst_application_stage(app,applog,engine):
+def mst_country(app,applog,engine):
     applog.info("Starting to create mst_application_stage")
-    mst_application_stage = None
+    mst_country = None
     try:
-        mst_application_stage = Table("country_table", MetaData(), autoload_with=engine)
+        mst_country = Table("country_table", MetaData(), autoload_with=engine)
 
     except Exception as exp:
         applog.debug("Exception occurred while mst_application_stage table " + str(exp))
     finally:
-        app.config['country_table'] = mst_application_stage
+        app.config['country_table'] = mst_country
 
 '''
 --------------DOC-----------------
@@ -89,7 +89,7 @@ The create_enginee function creates a database engine using the sqlalchemy.creat
 database schema and pool size using the global SCHEMA and POOL_SIZE variables defined earlier. It then creates a Table object 
 for the country_table table using the sqlalchemy.Table() function and assigns it to the Flask app config as app.config['country_table'].
 
-Finally, the mst_application_stage function is responsible for loading the country_table table into the Flask app config as a SQLAlchemy 
+Finally, the mst_country function is responsible for loading the country_table table into the Flask app config as a SQLAlchemy 
 Table object using the sqlalchemy.Table() function. If there is an error, it logs the error message.
 
 Overall, this module sets up a Flask application with a database connection engine using SQLAlchemy, defines a blueprint for handling 

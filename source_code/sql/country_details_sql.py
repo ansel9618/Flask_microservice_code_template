@@ -69,23 +69,23 @@ class Country_details:
                     self.logger.info("inside get_country")
                     self.session = Session(self.connection)
                     if "country_table" in cp.config and cp.config["country_table"] is not None:
-                        mst_application_stage = cp.config["country_table"]
+                        mst_country = cp.config["country_table"]
                     else:
-                        mst_application_stage = Table("country_table", MetaData(), autoload_with=self.engine)
-                        cp.config["country_table"] = mst_application_stage
+                        mst_country = Table("country_table", MetaData(), autoload_with=self.engine)
+                        cp.config["country_table"] = mst_country
                     application_stage = self.session \
-                        .query(mst_application_stage) \
+                        .query(mst_country) \
                         .limit(10)
-                    mst_application_stage= []
+                    mst_country_list= []
 
                     if application_stage:
                         for item in application_stage:
                             obj = {"Code":item.country_code,"Country_Name": item.country_name}
-                            mst_application_stage.append(obj)
+                            mst_country_list.append(obj)
 
                         self.session.commit()
                         self.session.close()
-                        resp.set_response(200, sorted(mst_application_stage, key=lambda x: x["Code"]), Messages.COUNTRY_LIST_SUCCESS,\
+                        resp.set_response(200, sorted(mst_country_list, key=lambda x: x["Code"]), Messages.COUNTRY_LIST_SUCCESS,\
                                           Messages.TRUE)
                     else:
                         self.logger.info("No country list available ")
@@ -94,7 +94,7 @@ class Country_details:
 
                 except Exception as excp:
                     Utils.process_exception(excp, self.logger,
-                                            f'{AppMessages.INTERNAL_ERROR}during getting country list', resp)
+                                            f'{Messages.INTERNAL_ERROR}during getting country list', resp)
                 finally:
                     self.logger.info("get_country function completed")
                     return resp
